@@ -34,43 +34,6 @@ title = st.text_input(label="")
 st.subheader('Enter News Snippet')
 news  = st.text_input(" ")
 
-'''def remove_stopwords(tokens):
-    return [token.text for token in tokens if not token.is_stop] 
-
-def lemmatization(tokens):
-    return [token.lemma for token in tokens]
-
-def data_preprocessing(df): #Cleans the data and return x_train ,y_train,x_test,y_test
-
-    from nltk.stem.snowball import SnowballStemmer
-    stemmer=SnowballStemmer(language='english')
-    import spacy
-    nlp=spacy.load('en_core_web_sm')
-    #Removing punctuations
-    df['title']=df['title'].str.replace('[^\w\s]','')
-    df['text']=df['text'].str.replace('[^\w\s]','')
-    
-    #Stemming every line
-    df['title']=[stemmer.stem(y) for y in df['title']]
-    df['text']= [stemmer.stem(y) for y in df['text']]
-    
-    #Tokeninzing every words
-    df['title']=df['title'].apply(lambda x:nlp.tokenizer(x))
-    df['text']=df['text'].apply(lambda x:nlp.tokenizer(x))
-    
-    #Stopping words removal
-    df['title']=df['title'].apply(remove_stopwords)
-    df['text']=df['text'].apply(remove_stopwords)
-    
-    #Replacing few unwanted characters
-    df['title'] =[list(map(lambda x:x.replace("\n",""),df['title'][i])) for i in range(len(df))]
-    df['text'] =[list(map(lambda x:x.replace("\n",""),df['text'][i])) for i in range(len(df))]
-    df['title'] =[list(map(lambda x:x.replace(" ",""),df['title'][i])) for i in range(len(df))]
-    df['text'] =[list(map(lambda x:x.replace(" ",""),df['text'][i])) for i in range(len(df))]
-    df['title'] =[list(filter(None, df['title'][i])) for i in range(len(df))]
-    df['text'] =[list(filter(None, df['text'][i])) for i in range(len(df))]  
-    return (df) '''
-
 def prediction(df):
     with open('nlp.pkl', 'rb') as file:
         prediction = dill.load(file)
