@@ -1,5 +1,5 @@
 import streamlit as st
-#from Fake_News_Classification import data_preprocessing,remove_stopwords,lemmatization
+from Fake_News_Classification import data_preprocessing,remove_stopwords,lemmatization
 import numpy as np
 import pandas as pd
 import dill
@@ -34,7 +34,7 @@ title = st.text_input(label="")
 st.subheader('Enter News Snippet')
 news  = st.text_input(" ")
 
-def remove_stopwords(tokens):
+'''def remove_stopwords(tokens):
     return [token.text for token in tokens if not token.is_stop] 
 
 def lemmatization(tokens):
@@ -69,7 +69,7 @@ def data_preprocessing(df): #Cleans the data and return x_train ,y_train,x_test,
     df['text'] =[list(map(lambda x:x.replace(" ",""),df['text'][i])) for i in range(len(df))]
     df['title'] =[list(filter(None, df['title'][i])) for i in range(len(df))]
     df['text'] =[list(filter(None, df['text'][i])) for i in range(len(df))]  
-    return (df)
+    return (df) '''
 
 def prediction(df):
     with open('nlp.pkl', 'rb') as file:
